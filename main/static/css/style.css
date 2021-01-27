@@ -1,0 +1,18 @@
+body {
+    background: url('/static/images/woodBackground.jpg') no-repeat;
+    background-size: cover;
+}
+
+.container {
+    margin-top: 500px;
+}
+
+a {
+    background-color: moccasin;
+}
+
+.tab-content {
+    background-color: moccasin;
+    height: 600px;
+    text-align: center;
+}
