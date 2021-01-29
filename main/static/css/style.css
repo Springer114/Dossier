@@ -1,30 +1,99 @@
+html {
+    height: 100%;
+}
+
 body {
     background: url('/static/images/woodBackground.jpg') no-repeat;
     background-size: cover;
+    height: 100%;
+    overflow: hidden;
 }
 
 .container {
-    margin-top: 500px;
+    margin-top: 5rem;
     font-family: 'Special Elite', cursive;
 }
 
 .nav.nav-tabs a {
     background-color: moccasin;
     color: black;
+    margin-right: 2px;
+    box-shadow: inset 0px 0px 16px -6px rgba(173,141,87,1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    border: none;
+    background-color: #fff2dd;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: rgba(0, 0, 0, 0.5);
 }
 
 .tab-content {
     background-color: moccasin;
     height: 600px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: inset 0px 0px 55px 4px rgb(173 141 87);
+}
+
+.tab-pane:not(#nav-home) {
+    background-color: #ebebeb;
+    z-index: -1;
 }
 
 .tab-content h1 {
     font-size: 100px;
-    padding-top: 200px;
 }
 
 .tab-content form {
-    margin: 0 200px;
-    padding-top: 200px;
+    padding: 2rem;
+    width: 40rem;
+    margin: 0 auto;
+}
+
+input.form-control {
+    padding: 1rem .75rem .6rem .75rem;
+}
+
+.btn {
+    padding-top: .5rem;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(80%) rotate(-4deg);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(0) rotate(0);
+    }
+    to {
+        transform: translateY(-100%) rotate(6deg);
+    }
+}
+
+.login-slide,
+.register-slide {
+    animation: slideDown 0.7s 1;
+    animation-fill-mode: forwards;
+}
+
+.register-slide .tab-pane,
+.login-slide .tab-pane {
+    animation: slideUp 0.2s 1;
+    animation-fill-mode: forwards;
+    width: 90%;
+    height: 500px;
+    position: relative;
+    right: -60px;
 }

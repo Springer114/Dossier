@@ -18,7 +18,7 @@
                 <h1>Dossier</h1>
             </div>
             <div class="col-lg-2">
-                <a href="">Edit</a> | <a href="/logout">Logout</a>
+                <a href="/edit_profile/{{user.id}}">Edit</a> | <a href="/logout">Logout</a>
             </div>
         </div>
         <div class="row">
@@ -29,14 +29,13 @@
                 <div class="name">
                     <h2>{{user.first_name}}</h2>
                     <h2>{{user.last_name}}</h2>
-                    <a href="">Other social sites</a>
                 </div>
             </div>
         </div>
         <div class="personalInfo">
             <div class="row ">
                 <div class="col info">
-                    <p>AKA: </p>
+                    <p>AKA: {{user.personal_information.aka}}</p>
                 </div>
                 <div class="col info">
                     <p>Occupation: </p>

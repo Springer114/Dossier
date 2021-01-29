@@ -43,7 +43,49 @@ def profile(request):
     return render(request, 'profile.html', context)
 
 def logout(request):
+    request.session.clear()
     return redirect('/')
 
+def edit_profile(request, user_id):
+    context = {
+        'user' : User.objects.get(id = request.session['user_id'])
+    }
+    return render(request, 'edit_profile.html', context)
+
+def update_profile(request, personal_id):
+    personal = PersonalInfo.objects.get(id = request.session['personal_id'])
+
+    personal.aka = request.POST['aka']
+    personal.occupation = request.POST['occupation']
+    personal.current_city = request.POST['current_city']
+    personal.place_of_birth = request.POST['place_of_birth']
+    personal.date_of_birth = request.POST['date_of_birth']
+    personal.gender = request.POST['gender']
+    personal.age = request.POST['age']
+    personal.marital_status = request.POST['marital_status']
+    personal.save()
+
+    return redirect('/profile')
+
 def stories(request):
-    return render(request, 'stories.html')
+    context = {
+        'user' : User.objects.get(id = request.session['user_id']),
+        'all_stories' : Story.objects.all()
+    }
+    return render(request, 'stories.html', context)
+
+def create_story(request):
+    new_story = Story.objects.create(
+        title = request.POST['title'],
+        body = request.POST['body'],
+        creator = User.objects.get(id = request.session['user_id'])
+    )
+
+    request.session['story_id'] = new_story.id
+
+    return redirect('/stories')
+
+def delete_story(request, story_id):
+    story = Story.objects.get(id = story_id)
+    story.delete()
+    return redirect('/stories')
