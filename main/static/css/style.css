@@ -5,14 +5,26 @@ body {
 
 .container {
     margin-top: 500px;
+    font-family: 'Special Elite', cursive;
 }
 
-a {
+.nav.nav-tabs a {
     background-color: moccasin;
+    color: black;
 }
 
 .tab-content {
     background-color: moccasin;
     height: 600px;
     text-align: center;
+}
+
+.tab-content h1 {
+    font-size: 100px;
+    padding-top: 200px;
+}
+
+.tab-content form {
+    margin: 0 200px;
+    padding-top: 200px;
 }

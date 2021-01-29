@@ -1,0 +1,65 @@
+body {
+    background: url('/static/images/woodBackground.jpg') no-repeat;
+    background-size: cover;
+}
+
+.container {
+    background-color: #ebebeb;
+    margin-top: 100px;
+    padding-top: 10px;
+    height: 1000px;
+    font-family: 'Special Elite', cursive;
+}
+
+div.row.justify-content-md-center {
+    margin: 20px 5px;
+    background-color: grey;
+    color: lightgray;
+    text-align: center;
+}
+
+div h1 {
+    padding-top: 15px;
+}
+
+div.col-lg-2 {
+    padding-top: 25px;
+}
+
+div.col-lg-2 a {
+    color: lightgray;
+    text-decoration: none;
+}
+
+div.col.photo {
+    height: 400px;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+div.name {
+    position: relative;
+    bottom: 0;
+}
+
+.personalInfo {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 0 10px;
+}
+
+div.col.info {
+    border: 1px solid black;
+}
+
+div .story a {
+    color: black;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+div .stories {
+    border-top: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+}
