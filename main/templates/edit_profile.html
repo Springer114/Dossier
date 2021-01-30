@@ -20,7 +20,7 @@
                 <h1>Dossier</h1>
             </div>
             <div class="col-lg-2">
-                <a href="">Edit</a> | <a href="/logout">Logout</a>
+                <a href="/logout">Logout</a>
             </div>
         </div>
         <div class="row">
@@ -35,38 +35,38 @@
             </div>
         </div>
         <div class="personalInfo">
-            <form action="/update_profile/{{personal.id}}" method="POST">
+            <form action="/profile/update/{{user.id}}" method="POST">
                 {% csrf_token %}
                 <div class="row ">
                     <div class="col info">
-                        <p>AKA: <input type="text" name="aka"></p>
+                        <p>AKA: <input type="text" name="aka" value="{{user.aka}}"></p>
                     </div>
                     <div class="col info">
-                        <p>Occupation: <input type="text" name="occupation"></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col info">
-                        <p>Current City: <input type="text" name="current_city"></p>
-                    </div>
-                    <div class="col info">
-                        <p>Place of Birth: <input type="text" name="place_of_birth"></p>
+                        <p>Occupation: <input type="text" name="occupation" value="{{user.occupation}}"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col info">
-                        <p>Date of Birth: <input type="text" name="date_of_birth"></p>
+                        <p>Current City: <input type="text" name="current_city" value="{{user.current_city}}"></p>
                     </div>
                     <div class="col info">
-                        <p>Gender: <input type="text" name="gender"></p>
-                    </div>
-                    <div class="col info">
-                        <p>Age: <input type="text" name="age"></p>
+                        <p>Place of Birth: <input type="text" name="place_of_birth" value="{{user.place_of_birth}}"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col info">
-                        <p>Marital Status: <input type="text" name="marital_status"></p>
+                        <p>Date of Birth: {{user.date_of_birth}}</p>
+                    </div>
+                    <div class="col info">
+                        <p>Gender: <input type="text" name="gender" value="{{user.gender}}"></p>
+                    </div>
+                    <div class="col info">
+                        <p>Age: <input type="text" name="age" value="{{user.age}}"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col info">
+                        <p>Marital Status: <input type="text" name="marital_status" value="{{user.marital_status}}"></p>
                     </div>
                     <div class="col info">
                         <p>Family: </p>
@@ -77,7 +77,7 @@
                         <p><a href="">Known Associates:</a></p>
                     </div>
                     <div class="col info">
-                        <p>Education: </p>
+                        <p>Education: <input type="text" name="education" value="{{user.education}}"></p>
                     </div>
                 </div>
                 <div class="row">
@@ -90,14 +90,22 @@
                 </div>
                 <div class="row">
                     <div class="col info">
-                        <p>Contact Info: </p>
+                        <p>Contact Info:</p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <button type="submit">Update</button>
+                </div>
+                <div class="row">
+                    <button type="submit">Update</button>
+                </div>
+                {% if messages %}
+                    <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                <p>About: <input type="text" name="about" value="{{user.about}}"></p>
             </form>
-            <p>About:</p>
         </div>
     </div>
 </body>

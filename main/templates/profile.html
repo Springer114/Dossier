@@ -18,7 +18,7 @@
                 <h1>Dossier</h1>
             </div>
             <div class="col-lg-2">
-                <a href="/edit_profile/{{user.id}}">Edit</a> | <a href="/logout">Logout</a>
+                <a href="/profile/edit/{{user.id}}">Edit</a> | <a href="/logout">Logout</a>
             </div>
         </div>
         <div class="row">
@@ -35,37 +35,37 @@
         <div class="personalInfo">
             <div class="row ">
                 <div class="col info">
-                    <p>AKA: {{user.personal_information.aka}}</p>
+                    <p>Aliases: {{user.aka}}</p>
                 </div>
                 <div class="col info">
-                    <p>Occupation: </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col info">
-                    <p>Current City: </p>
-                </div>
-                <div class="col info">
-                    <p>Place of Birth: </p>
+                    <p>Occupation: {{user.occupation}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col info">
-                    <p>Date of Birth: </p>
+                    <p>Current City: {{user.current_city}}</p>
                 </div>
                 <div class="col info">
-                    <p>Gender: </p>
-                </div>
-                <div class="col info">
-                    <p>Age: </p>
+                    <p>Place of Birth: {{user.place_of_birth}}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col info">
-                    <p>Marital Status: </p>
+                    <p>Date of Birth: {{user.date_of_birth}}</p>
                 </div>
                 <div class="col info">
-                    <p>Family: </p>
+                    <p>Gender: {{user.gender}}</p>
+                </div>
+                <div class="col info">
+                    <p>Age: {{user.age}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col info">
+                    <p>Marital Status: {{user.marital_status}}</p>
+                </div>
+                <div class="col info">
+                    <p>Family:</p>
                 </div>
             </div>
             <div class="row">
@@ -73,7 +73,7 @@
                     <p><a href="">Known Associates:</a></p>
                 </div>
                 <div class="col info">
-                    <p>Education: </p>
+                    <p>Education: {{user.education}}</p>
                 </div>
             </div>
             <div class="row">
@@ -86,12 +86,12 @@
             </div>
             <div class="row">
                 <div class="col info">
-                    <p>Contact Info: </p>
+                    <p>Contact Info:</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <p>About:</p>
+            <p>About: {{user.about}}</p>
         </div>
     </div>
 </body>

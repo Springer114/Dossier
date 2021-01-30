@@ -18,27 +18,32 @@ class UserManager(models.Manager):
             errors['password'] = "Password must be at least 8 characters"
         if post_data['password'] != post_data['confirm_password']:
             errors['confirm_password'] = "Password and Confirm Password must match"
+        DATE_REGEX = re.compile(r'^[A-Za-z0-9/,-]')
+        if not DATE_REGEX.match(post_data['date_of_birth']):
+            errors['date_of_birth'] = "Needs to be a valid date"
         return errors
+
+    def validate_user_update(self, postData):
+        errs = {}
+        
+        return errs
 
 class User(models.Model):
     first_name = models.CharField(max_length = 45)
     last_name = models.CharField(max_length = 45)
+    date_of_birth = models.DateField()
     email = models.CharField(max_length = 255)
     password = models.CharField(max_length = 255)
-    objects = UserManager()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class PersonalInfo(models.Model):
     aka = models.CharField(max_length = 90, blank = True)
     occupation = models.CharField(max_length = 255, blank = True)
     current_city = models.CharField(max_length = 255, blank = True)
     place_of_birth = models.CharField(max_length = 255, blank = True)
-    date_of_birth = models.DateField(blank = True, null = True)
     gender = models.CharField(max_length = 45, blank = True)
     age = models.PositiveSmallIntegerField(blank = True, null = True)
     marital_status = models.CharField(max_length = 255, blank = True)
-    person = models.ForeignKey(User, related_name = 'personal_information', on_delete = models.CASCADE)
+    education = models.CharField(max_length = 255, blank = True)
+    about = models.TextField(blank = True)
+    objects = UserManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

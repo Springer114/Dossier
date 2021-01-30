@@ -1,13 +1,18 @@
+html {
+    height: 100%;
+}
+
 body {
-    background: url('/static/images/woodBackground.jpg') no-repeat;
+    background: url('/static/images/woodBackground.jpg');
     background-size: cover;
+    height: 100%;
 }
 
 .container {
     background-color: #ebebeb;
     margin-top: 100px;
     padding-top: 10px;
-    height: 1000px;
+    height: 100%;
     font-family: 'Special Elite', cursive;
 }
 
@@ -58,8 +63,8 @@ div .story a {
     margin-left: 5px;
 }
 
-div .stories {
-    border-top: 1px solid black;
+h4 {
+    border-top: 2px solid grey;
     margin: 5px;
     padding: 5px;
 }

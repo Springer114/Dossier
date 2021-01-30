@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import User, PersonalInfo, Story
+from .models import User, Story
 import bcrypt
 
 def index(request):
@@ -30,6 +30,7 @@ def register(request):
     new_user = User.objects.create(
         first_name = request.POST['first_name'],
         last_name = request.POST['last_name'],
+        date_of_birth = request.POST['date_of_birth'],
         email = request.POST['email'],
         password = hashed_pw
     )
@@ -52,19 +53,25 @@ def edit_profile(request, user_id):
     }
     return render(request, 'edit_profile.html', context)
 
-def update_profile(request, personal_id):
-    personal = PersonalInfo.objects.get(id = request.session['personal_id'])
+def update_profile(request, user_id):
+    user = User.objects.get(id = user_id)
 
-    personal.aka = request.POST['aka']
-    personal.occupation = request.POST['occupation']
-    personal.current_city = request.POST['current_city']
-    personal.place_of_birth = request.POST['place_of_birth']
-    personal.date_of_birth = request.POST['date_of_birth']
-    personal.gender = request.POST['gender']
-    personal.age = request.POST['age']
-    personal.marital_status = request.POST['marital_status']
-    personal.save()
+    errs = User.objects.validate_user_update(request.POST)
+    if errs:
+        for value in errs.values():
+            messages.error(request, value)
+        return redirect(f'/profile/edit/{user.id}')
 
+    user.aka = request.POST['aka']
+    user.occupation = request.POST['occupation']
+    user.current_city = request.POST['current_city']
+    user.place_of_birth = request.POST['place_of_birth']
+    user.gender = request.POST['gender']
+    user.age = request.POST['age']
+    user.marital_status = request.POST['marital_status']
+    user.education = request.POST['education']
+    user.about = request.POST['about']
+    user.save()
     return redirect('/profile')
 
 def stories(request):
@@ -83,6 +90,13 @@ def create_story(request):
 
     request.session['story_id'] = new_story.id
 
+    return redirect('/stories')
+
+def edit_story(request, story_id):
+    story = Story.objects.get(id = story_id)
+    story.title = request.POST['title']
+    story.body = request.POST['body']
+    story.save()
     return redirect('/stories')
 
 def delete_story(request, story_id):
