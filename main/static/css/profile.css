@@ -44,7 +44,7 @@ div.col.photo {
 
 div.name {
     position: relative;
-    bottom: 0;
+    margin-top: 20px;
 }
 
 .personalInfo {
@@ -67,4 +67,8 @@ h4 {
     border-top: 2px solid grey;
     margin: 5px;
     padding: 5px;
+}
+
+.profile-about {
+    margin: 0 10px;
 }
